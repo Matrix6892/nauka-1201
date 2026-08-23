@@ -113,7 +113,7 @@ for (const [file, articleHtml] of articles) {
 
 const routeHtml = fs.readFileSync(new URL('route.html', import.meta.url), 'utf8');
 if (!routeHtml.includes('data-next-link')) throw new Error('Связанный материал на странице программы не кликабелен');
-for (const asset of ['assets/hero-glp1-v2.webp', 'assets/hero-glp1-mobile-v2.webp', 'assets/article-fisetin-v2.webp']) {
+for (const asset of ['assets/hero-glp1-v3.webp', 'assets/hero-glp1-mobile-v3.webp', 'assets/article-fisetin-v2.webp']) {
   if (!fs.existsSync(new URL(asset, import.meta.url))) throw new Error(`Нет изображения ${asset}`);
 }
 

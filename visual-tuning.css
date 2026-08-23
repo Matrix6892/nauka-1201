@@ -1,0 +1,253 @@
+/* Targeted image-composition tuning. Loaded after styles.css for clean rollback. */
+
+/* Keep the cardio subject clear of the card copy on wide screens. */
+.route-card-cardio {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.route-card-cardio .route-card-proof {
+  margin-left: auto;
+}
+
+.route-card-cardio .route-card-shade {
+  background:
+    linear-gradient(to left, rgba(9, 14, 12, .82), rgba(9, 14, 12, .1) 72%),
+    linear-gradient(0deg, rgba(9, 14, 12, .94), rgba(9, 14, 12, .08) 68%);
+}
+
+/* The compact result dossier duplicated copy and covered legs in several heroes. */
+.route-signal {
+  display: none;
+}
+
+/* Give the female portrait a cleaner left text-safe zone. */
+.hormone-female img {
+  object-position: 20% center;
+}
+
+@media (min-width: 901px) {
+  /* The subject lives on the left in these three photographs. */
+  [data-route="cardio"] .route-hero-copy,
+  [data-route="longevity"] .route-hero-copy {
+    width: min(58rem, 62vw);
+    margin-left: auto;
+  }
+
+  [data-route="male"] .route-hero-copy {
+    width: min(43rem, 48vw);
+    margin-left: auto;
+  }
+
+  [data-route="cardio"] .route-hero-scrim,
+  [data-route="longevity"] .route-hero-scrim,
+  [data-route="male"] .route-hero-scrim {
+    background:
+      linear-gradient(to left, rgba(8, 13, 11, .92) 0%, rgba(8, 13, 11, .52) 54%, rgba(8, 13, 11, .08) 82%),
+      linear-gradient(0deg, rgba(8, 13, 11, .78), transparent 62%);
+  }
+
+  [data-route="cardio"] .route-signal,
+  [data-route="longevity"] .route-signal,
+  [data-route="male"] .route-signal {
+    display: none;
+  }
+
+  [data-route="female"] .route-hero-copy {
+    width: min(39rem, 43vw);
+  }
+
+  [data-route="female"] .route-hero-media img {
+    object-position: 28% center;
+  }
+
+  /* The longevity subject is on the left; the right side is the true safe area. */
+  .longevity-canvas .canvas-copy {
+    margin-left: auto;
+  }
+
+  .longevity-canvas .canvas-scrim {
+    background:
+      linear-gradient(to left, rgba(10, 15, 13, .86) 0%, rgba(10, 15, 13, .48) 52%, rgba(10, 15, 13, .08) 80%),
+      linear-gradient(0deg, rgba(10, 15, 13, .76), transparent 55%);
+  }
+}
+
+@media (max-width: 900px) {
+  /* Editorial image-above-copy cards: no text sits on a person. */
+  .route-card {
+    --card-media-height: clamp(18rem, 48svh, 28rem);
+    min-height: 0;
+    padding-top: calc(var(--card-media-height) + 2rem);
+    background: var(--ink);
+  }
+
+  .route-card-cardio {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .route-card-cardio .route-card-proof {
+    margin-left: 0;
+  }
+
+  .route-card picture,
+  .route-card > img {
+    inset: 0 0 auto;
+    height: var(--card-media-height);
+  }
+
+  .route-card picture img {
+    inset: 0;
+    height: 100%;
+  }
+
+  .route-card-shade {
+    inset: 0 0 auto;
+    height: var(--card-media-height);
+    background: linear-gradient(0deg, var(--ink) 0%, rgba(9, 14, 12, .48) 18%, transparent 52%);
+  }
+
+  .route-card-glp img {
+    object-position: 72% center;
+  }
+
+  .route-card-cardio img {
+    object-position: 0% center;
+  }
+
+  /* Route heroes become a clear image chapter followed by copy. */
+  .route-hero {
+    --route-media-height: clamp(28rem, 58svh, 36rem);
+    min-height: 0;
+    display: block;
+    padding: calc(var(--route-media-height) + 2.25rem) var(--pad) 3rem;
+    background: var(--ink);
+  }
+
+  .route-hero-media {
+    inset: 0 0 auto;
+    height: var(--route-media-height);
+  }
+
+  .route-hero-scrim {
+    inset: 0 0 auto;
+    height: var(--route-media-height);
+    background:
+      linear-gradient(0deg, var(--ink) 0%, rgba(8, 13, 11, .48) 18%, transparent 52%),
+      linear-gradient(90deg, rgba(8, 13, 11, .42), transparent 68%);
+  }
+
+  .route-hero-copy {
+    width: 100%;
+    margin: 0;
+  }
+
+  [data-route="glp1"] .route-hero-media img {
+    object-position: 72% center;
+  }
+
+  [data-route="cardio"] .route-hero-media img,
+  [data-route="longevity"] .route-hero-media img,
+  [data-route="male"] .route-hero-media img {
+    object-position: 0% center;
+  }
+
+  [data-route="female"] .route-hero-media img {
+    object-position: 28% center;
+  }
+
+  /* The home longevity scene gets the same image-above-copy discipline. */
+  .longevity-canvas {
+    --canvas-media-height: clamp(28rem, 58svh, 36rem);
+    min-height: 0;
+    display: block;
+    padding: calc(var(--canvas-media-height) + 2.25rem) var(--pad) 2rem;
+    background: var(--ink);
+  }
+
+  .longevity-canvas .canvas-media {
+    inset: 0 0 auto;
+    height: var(--canvas-media-height);
+  }
+
+  .longevity-canvas .canvas-media img {
+    object-position: 0% center;
+  }
+
+  .longevity-canvas .canvas-scrim {
+    inset: 0 0 auto;
+    height: var(--canvas-media-height);
+    background:
+      linear-gradient(0deg, var(--ink) 0%, rgba(8, 13, 11, .5) 18%, transparent 52%),
+      linear-gradient(90deg, rgba(8, 13, 11, .42), transparent 72%);
+  }
+
+  .longevity-canvas .canvas-copy {
+    margin: 0;
+    padding-bottom: 6rem;
+  }
+
+  /* Hormone panels keep the portrait intact and put all copy beneath it. */
+  .hormone-panel {
+    --hormone-media-height: clamp(28rem, 60svh, 38rem);
+    min-height: 0;
+    display: block;
+    padding-top: calc(var(--hormone-media-height) + 2rem);
+    background: var(--ink);
+  }
+
+  .hormone-panel img {
+    inset: 0 0 auto;
+    height: var(--hormone-media-height);
+  }
+
+  .hormone-panel .panel-scrim {
+    inset: 0 0 auto;
+    height: var(--hormone-media-height);
+    background: linear-gradient(0deg, var(--ink) 0%, rgba(8, 13, 11, .46) 18%, transparent 52%);
+  }
+
+  .hormone-panel .route-card-label,
+  .hormone-panel > strong,
+  .hormone-panel .panel-proof,
+  .hormone-panel > em {
+    display: block;
+    width: auto;
+  }
+
+  .hormone-male img {
+    object-position: 0% center;
+  }
+
+  .hormone-female img {
+    object-position: 60% center;
+    top: 2.5rem;
+    height: calc(var(--hormone-media-height) - 2.5rem);
+  }
+
+  [data-route="female"] .route-hero-media img {
+    position: relative;
+    top: 2.5rem;
+    height: calc(100% - 2.5rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .route-hero {
+    --route-media-height: clamp(22rem, 46svh, 29rem);
+  }
+
+  .route-card-glp img,
+  [data-route="glp1"] .route-hero-media img {
+    object-position: 50% 18%;
+  }
+
+  [data-route="female"] .route-hero-media img {
+    object-position: 60% center;
+  }
+
+  .route-title {
+    max-width: 15ch;
+  }
+}
