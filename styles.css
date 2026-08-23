@@ -84,22 +84,24 @@ h3{font-size:clamp(1.5rem,2.2vw,2.55rem);line-height:1.06}
 .hero-dossier strong{font-size:.78rem;font-weight:440;text-align:right}
 .hero-dossier .mono{font-size:1.15rem;color:var(--ion)}
 
-.route-gateway{padding:clamp(6rem,12vw,12rem) var(--pad)}
+.route-gateway{padding:clamp(4rem,7vw,7rem) var(--pad)}
 .section-head{display:grid;grid-template-columns:minmax(8rem,.55fr) 1.45fr;gap:2rem;align-items:start;margin-bottom:clamp(3rem,6vw,6rem)}
 .section-head h2{max-width:16ch}
+.route-gateway .section-head{grid-template-columns:minmax(8rem,.45fr) 1.55fr;margin-bottom:clamp(2rem,4vw,3.75rem)}
+.route-gateway .section-head h2{max-width:18ch;font-size:clamp(2.25rem,3.4vw,4rem);line-height:1}
 .gateway-grid{display:grid;grid-template-columns:1.07fr .93fr;gap:1px;background:var(--line-dark)}
-.route-card{position:relative;isolation:isolate;min-height:clamp(35rem,65vw,55rem);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding:clamp(1.5rem,4vw,4rem);background:var(--ink)}
+.route-card{position:relative;isolation:isolate;min-height:clamp(26rem,36vw,32rem);display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding:clamp(1.4rem,3vw,3rem);background:var(--ink)}
 .route-card img{position:absolute;inset:0;z-index:-3;width:100%;height:100%;object-fit:cover;transition:transform 1.15s var(--ease),filter 1.15s var(--ease)}
 .route-card-shade,.panel-scrim{position:absolute;inset:0;z-index:-2;background:linear-gradient(0deg,rgba(9,14,12,.92),rgba(9,14,12,.08) 68%)}
 .route-card:after,.hormone-panel:after{position:absolute;top:0;bottom:0;left:18%;z-index:-1;width:1px;content:"";background:linear-gradient(transparent,var(--ion),transparent);transform:translateY(70%);transition:transform 1s var(--ease)}
 .route-card:hover img,.hormone-panel:hover img{transform:scale(1.035);filter:brightness(1.06)}
 .route-card:hover:after,.hormone-panel:hover:after{transform:translateY(-30%)}
 .route-card-label{margin-bottom:1rem;color:var(--sage);font-size:.74rem}
-.route-card strong{max-width:14ch;font-size:clamp(3.2rem,5.5vw,6.9rem);font-weight:430;line-height:.93;letter-spacing:-.034em}
+.route-card strong{max-width:14ch;font-size:clamp(2.25rem,4vw,4.6rem);font-weight:430;line-height:.94;letter-spacing:-.034em}
 .route-card-proof{max-width:32rem;margin-top:1.4rem;color:rgba(242,238,229,.65);font-size:.85rem}
-.route-card>i{position:absolute;right:clamp(1.5rem,4vw,4rem);bottom:clamp(1.5rem,4vw,4rem);display:grid;width:3.25rem;height:3.25rem;place-items:center;border-radius:50%;background:var(--ion);font-style:normal;transition:transform .45s var(--ease)}
+.route-card>i{position:absolute;right:clamp(1.4rem,3vw,3rem);bottom:clamp(1.4rem,3vw,3rem);display:grid;width:3.25rem;height:3.25rem;place-items:center;border-radius:50%;background:var(--ion);font-style:normal;transition:transform .45s var(--ease)}
 .route-card:hover>i{transform:rotate(45deg)}
-.route-card-cardio{margin-top:clamp(5rem,12vw,13rem);min-height:clamp(31rem,56vw,48rem)}
+.route-card-cardio{margin-top:clamp(1.5rem,4vw,3.5rem);min-height:clamp(24rem,32vw,28rem)}
 .route-card-glp img{object-position:76% center}
 .route-card-cardio img{object-position:57% center}
 
@@ -315,6 +317,7 @@ h3{font-size:clamp(1.5rem,2.2vw,2.55rem);line-height:1.06}
 
 .reveal{opacity:0;transform:translateY(1.7rem);filter:blur(7px);transition:opacity .78s var(--ease),transform .78s var(--ease),filter .78s var(--ease)}
 .reveal.is-visible{opacity:1;transform:none;filter:none}
+@media (scripting:none){.reveal{opacity:1;transform:none;filter:none}}
 .hero .reveal:nth-child(2),.route-hero .reveal:nth-child(2){transition-delay:.07s}
 .hero .reveal:nth-child(3),.route-hero .reveal:nth-child(3){transition-delay:.14s}
 .hero .reveal:nth-child(4),.route-hero .reveal:nth-child(4){transition-delay:.21s}
@@ -326,9 +329,10 @@ h3{font-size:clamp(1.5rem,2.2vw,2.55rem);line-height:1.06}
   .hero-title{font-size:clamp(4rem,15vw,8rem)}
   .hero-dossier,.route-signal{display:none}
   .section-head,.proof-section,.knowledge-head,.contact,.route-section-head,.route-next,.article-shell{grid-template-columns:1fr}
+  .route-gateway .section-head{grid-template-columns:1fr}
   .section-head h2,.knowledge-head h2,.knowledge-head>p:last-child,.route-section-head h2,.route-section-head>p:not(.eyebrow){grid-column:1}
   .gateway-grid{grid-template-columns:1fr}
-  .route-card,.route-card-cardio{min-height:43rem;margin-top:0}
+  .route-card,.route-card-cardio{min-height:36rem;margin-top:0}
   .proof-section{gap:5rem}
   .longevity-canvas{min-height:58rem}
   .hormone-male,.hormone-female{margin:0}
@@ -366,8 +370,11 @@ h3{font-size:clamp(1.5rem,2.2vw,2.55rem);line-height:1.06}
   .button{width:100%;min-height:3.5rem}
   .section-head{margin-bottom:2.5rem}
   .route-gateway,.proof-section,.hormones,.knowledge,.contact,.route-facts,.route-ladder,.route-next{padding-top:6rem;padding-bottom:6rem}
-  .route-card,.route-card-cardio{min-height:34rem;padding-bottom:1.5rem}
-  .route-card strong{font-size:clamp(2.9rem,12.2vw,4.3rem);line-height:.96}
+  .route-gateway{padding-top:4rem;padding-bottom:4rem}
+  .route-gateway .section-head{margin-bottom:2rem}
+  .route-gateway .section-head h2{font-size:clamp(2.15rem,9vw,2.85rem)}
+  .route-card,.route-card-cardio{min-height:28rem;padding-bottom:1.5rem}
+  .route-card strong{font-size:clamp(2.35rem,10.2vw,3.3rem);line-height:.96}
   .route-card>i{display:none}
   .proof-section{gap:3rem}
   .proof-lead h2{font-size:clamp(2.7rem,11vw,3.6rem)}
