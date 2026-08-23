@@ -22,24 +22,26 @@ for (const [input, expected] of cases) {
   if (actual !== expected) throw new Error(`${input}: ${actual} !== ${expected}`);
 }
 
-for (const file of ['index.html', 'route.html', 'article-protein-glp1.html']) {
+const articleFiles = ['article-protein-glp1.html', 'article-senolytics-fisetin.html'];
+
+for (const file of ['index.html', 'route.html', ...articleFiles]) {
   const html = fs.readFileSync(new URL(file, import.meta.url), 'utf8');
   if (!html.includes('<html lang="ru">')) throw new Error(`${file}: язык страницы не указан`);
   if (/text-transform\s*:\s*uppercase/i.test(html)) throw new Error(`${file}: найден uppercase`);
-  if (file !== 'article-protein-glp1.html') {
+  if (!articleFiles.includes(file)) {
     if (!html.includes('data-contact-form')) throw new Error(`${file}: форма не найдена`);
     if (html.includes('required')) throw new Error(`${file}: найдено обязательное поле`);
   }
 }
 
 const indexHtml = fs.readFileSync(new URL('index.html', import.meta.url), 'utf8');
-const articleHtml = fs.readFileSync(new URL('article-protein-glp1.html', import.meta.url), 'utf8');
-const clientCopy = [
+const articles = articleFiles.map((file) => [file, fs.readFileSync(new URL(file, import.meta.url), 'utf8')]);
+const surfaceCopy = [
   indexHtml,
   fs.readFileSync(new URL('route.html', import.meta.url), 'utf8'),
-  articleHtml,
   source.slice(0, source.indexOf('const $ ='))
 ].join('\n');
+const clientCopy = [surfaceCopy, ...articles.map(([, html]) => html)].join('\n');
 
 for (const forbidden of [
   /data-concept-form/i,
@@ -51,7 +53,8 @@ for (const forbidden of [
   /VERIFIED|INTERNAL CHECK|MEDICAL REVIEW|LEGAL REVIEW|UNCONFIRMED/,
   /восточноевроп|славян/i,
   /\bвладелец\b|\bконтур\b/i,
-  /\bконцепт\b|\bпрототип\b/i
+  /\bконцепт\b|\bпрототип\b/i,
+  /health.?лид/i
 ]) {
   if (forbidden.test(clientCopy)) throw new Error(`Клиентский слой содержит служебный текст: ${forbidden}`);
 }
@@ -66,7 +69,7 @@ for (const serviceFirst of [
   /выберите задачу/i,
   /разобраться до при[её]ма/i
 ]) {
-  if (serviceFirst.test(clientCopy)) throw new Error(`Клиентский слой продаёт внутренний процесс: ${serviceFirst}`);
+  if (serviceFirst.test(surfaceCopy)) throw new Error(`Клиентский слой продаёт внутренний процесс: ${serviceFirst}`);
 }
 
 for (const redundantPronoun of [
@@ -90,19 +93,29 @@ for (const benefit of [
 
 const knowledgeSection = indexHtml.match(/<section class="knowledge[\s\S]*?<\/section>/)?.[0];
 if (!knowledgeSection) throw new Error('На главной нет секции практических разборов');
-if (!knowledgeSection.includes('href="article-protein-glp1.html"')) throw new Error('Полный разбор не доступен с главной');
+for (const file of articleFiles) {
+  if (!knowledgeSection.includes(`href="${file}"`)) throw new Error(`${file}: полный разбор не доступен с главной`);
+}
 if (knowledgeSection.includes('#contact') || /route\.html\?route=/.test(knowledgeSection)) throw new Error('Разбор на главной ведёт в продажу до ответа');
 
-if (/<script\b/i.test(articleHtml)) throw new Error('Основное содержание статьи зависит от JS');
-if (!/Проверено 13 августа 2026|проверены 13 августа 2026/i.test(articleHtml)) throw new Error('У статьи нет даты актуальности');
-if ((articleHtml.match(/href="https:\/\//g) || []).length < 3) throw new Error('У статьи недостаточно внешних доказательных источников');
+for (const [file, articleHtml] of articles) {
+  if (/<script\b/i.test(articleHtml)) throw new Error(`${file}: основное содержание зависит от JS`);
+  if (!/Проверено 23 августа 2026|проверены 23 августа 2026/i.test(articleHtml)) throw new Error(`${file}: нет даты актуальности`);
+  if ((articleHtml.match(/href="https:\/\//g) || []).length < 8) throw new Error(`${file}: недостаточно внешних доказательных источников`);
 
-const fullAnswerAt = articleHtml.indexOf('data-full-answer');
-const sourcesAt = articleHtml.indexOf('class="article-sources"');
-const personalCtaAt = articleHtml.indexOf('data-personal-cta');
-if (fullAnswerAt < 0 || sourcesAt < fullAnswerAt || personalCtaAt < sourcesAt) throw new Error('Персональный CTA появился до полного ответа и источников');
-const beforeFullAnswer = articleHtml.slice(0, fullAnswerAt);
-if (/data-personal-cta|article-button|href="#contact"|route\.html\?route=/i.test(beforeFullAnswer)) throw new Error('До полного ответа найден CTA');
+  const fullAnswerAt = articleHtml.indexOf('data-full-answer');
+  const sourcesAt = articleHtml.indexOf('class="article-sources"');
+  const personalCtaAt = articleHtml.indexOf('data-personal-cta');
+  if (fullAnswerAt < 0 || sourcesAt < fullAnswerAt || personalCtaAt < sourcesAt) throw new Error(`${file}: персональный CTA появился до полного ответа и источников`);
+  const beforeFullAnswer = articleHtml.slice(0, fullAnswerAt);
+  if (/data-personal-cta|article-button|href="#contact"|route\.html\?route=/i.test(beforeFullAnswer)) throw new Error(`${file}: до полного ответа найден CTA`);
+}
+
+const routeHtml = fs.readFileSync(new URL('route.html', import.meta.url), 'utf8');
+if (!routeHtml.includes('data-next-link')) throw new Error('Связанный материал на странице программы не кликабелен');
+for (const asset of ['assets/hero-glp1-v2.webp', 'assets/hero-glp1-mobile-v2.webp', 'assets/article-fisetin-v2.webp']) {
+  if (!fs.existsSync(new URL(asset, import.meta.url))) throw new Error(`Нет изображения ${asset}`);
+}
 
 const routesMatch = source.match(/const routes = \{([\s\S]*?)\n\};/);
 for (const key of ['glp1', 'cardio', 'longevity', 'male', 'female']) {
@@ -120,4 +133,4 @@ const css = fs.readFileSync(new URL('styles.css', import.meta.url), 'utf8');
 if (!css.includes('@media (prefers-reduced-motion:reduce)')) throw new Error('Нет reduced-motion режима');
 if (/text-transform\s*:\s*uppercase/i.test(css)) throw new Error('Найден CSS uppercase');
 
-console.log(`Проверено: ${cases.size} форматов телефона, 5 программ, формы, полный бесплатный разбор, порядок CTA, источники, доступность без JS, SVG-иконки, reduced motion и чистый клиентский слой.`);
+console.log(`Проверено: ${cases.size} форматов телефона, 5 программ, формы, 2 полных бесплатных разбора, порядок CTA, источники, desktop/mobile изображения, доступность без JS, SVG-иконки, reduced motion и чистый клиентский слой.`);

@@ -7,8 +7,8 @@
   <meta name="description" content="Персональная программа 1201 от Науки: ясная цель, подходящее медицинское решение и лучший следующий шаг.">
   <title>Программа | 1201 от Науки</title>
   <link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=20260814-2">
-  <script src="app.js?v=20260814-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260823-2">
+  <script src="app.js?v=20260823-2" defer></script>
 </head>
 <body class="route-page">
   <a class="skip-link" href="#content">К содержанию</a>
@@ -23,12 +23,17 @@
 
   <main id="content" data-route-root>
     <section class="route-hero" data-pointer-scene>
-      <div class="route-hero-media" aria-hidden="true" data-pointer-layer><img data-route-image src="assets/hero-glp1.webp" alt="" width="1440" height="811" fetchpriority="high"></div>
+      <div class="route-hero-media" aria-hidden="true" data-pointer-layer>
+        <picture>
+          <source data-route-source media="(max-width: 600px)" srcset="assets/hero-glp1-mobile-v2.webp">
+          <img data-route-image src="assets/hero-glp1-v2.webp" alt="" width="1672" height="941" fetchpriority="high">
+        </picture>
+      </div>
       <div class="route-hero-scrim" aria-hidden="true"></div>
       <div class="route-hero-copy">
         <p class="eyebrow reveal" data-route-kicker>Снижение веса · GLP‑1</p>
-        <h1 class="route-title reveal" data-route-title>Снизить вес, сохранить силу, удержать результат</h1>
-        <p class="route-deck reveal" data-route-deck>Снижение веса должно возвращать движение, а не забирать силы. Врач определит, подходит ли GLP‑1, а питание, мышцы и переносимость останутся в одной программе.</p>
+        <h1 class="route-title reveal" data-route-title>Снижать вес и сохранять силы по пути</h1>
+        <p class="route-deck reveal" data-route-deck>Препараты на основе кишечного гормона GLP‑1 помогают насыщаться меньшей порцией. Врач определит, подходит ли такое лечение, а питание, переносимость, талия и сила останутся в одной программе.</p>
         <a class="button reveal" href="#route-contact" data-route-cta>Получить персональный план снижения веса <span aria-hidden="true">↗</span></a>
       </div>
       <div class="route-signal reveal" data-route-signal>
@@ -51,9 +56,9 @@
       </div>
       <ol class="ladder-track" data-route-ladder></ol>
       <div class="ownership-card reveal">
-        <div><span>Медицина</span><strong>У лечения есть врач, который принимает решения и отвечает за безопасность</strong></div>
+        <div><span>Медицинский выбор</span><strong>Перед началом врач проверит лекарства и состояния, которые влияют на решение</strong></div>
         <i aria-hidden="true"></i>
-        <div><span>Повседневная жизнь</span><strong>Health‑лид помогает встроить выбранное в обычную неделю</strong></div>
+        <div><span>Повседневная жизнь</span><strong>Специалист по сопровождению поможет встроить выбранный шаг в обычную неделю</strong></div>
         <i aria-hidden="true"></i>
         <div><span>Контроль</span><strong>Логика выбора, результат и следующий шаг всегда перед глазами</strong></div>
       </div>
@@ -63,17 +68,20 @@
       <div class="route-spire-art" aria-hidden="true"><i></i><i></i><i></i></div>
       <div class="route-spire-copy reveal">
         <p class="eyebrow" data-spire-kicker>После назначения</p>
-        <h2 id="route-spire-title" data-route-spire>Большинство GLP‑1‑программ заканчиваются на назначении<br><span>Мы только начинаем</span></h2>
+        <h2 id="route-spire-title" data-route-spire>Назначение — первая точка<br><span>Дальше начинается путь к результату</span></h2>
       </div>
     </section>
 
     <section class="route-next section-bone" data-route-next aria-labelledby="next-title">
-      <div class="route-section-head reveal">
-        <p class="eyebrow" data-next-kicker>Практический разбор</p>
-        <h2 id="next-title" data-next-title>Белок на GLP‑1: сколько нужно, когда аппетит стал меньше</h2>
-        <p data-next-copy>Белок приходится уместить в меньшую порцию. Разбираем, сколько нужно и из каких продуктов его получить.</p>
-      </div>
-      <div class="next-image reveal"><img data-next-image src="assets/article-protein.webp" alt="" width="1440" height="811" loading="lazy"></div>
+      <a class="route-next-link" data-next-link href="article-protein-glp1.html">
+        <div class="route-section-head reveal">
+          <p class="eyebrow" data-next-kicker>Практический разбор</p>
+          <h2 id="next-title" data-next-title>Как собрать рацион, когда препарат уменьшил аппетит</h2>
+          <p data-next-copy>Две крайности, белок без магической цифры, сила, талия и честный план на случай отмены препарата.</p>
+          <span class="route-next-action">Открыть полный разбор ↗</span>
+        </div>
+        <div class="next-image reveal"><img data-next-image src="assets/article-protein.webp" alt="" width="1440" height="811" loading="lazy"></div>
+      </a>
     </section>
 
     <section class="contact section-bone route-contact" id="route-contact" aria-labelledby="contact-title">

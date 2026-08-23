@@ -8,8 +8,8 @@
   <title>1201 от Науки | персональная медицина для долголетия</title>
   <link rel="preload" href="assets/fonts/onest-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/hero-brand-ultrasharp.webp" as="image" type="image/webp">
-  <link rel="stylesheet" href="styles.css?v=20260823-1">
-  <script src="app.js?v=20260823-1" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260823-2">
+  <script src="app.js?v=20260823-2" defer></script>
 </head>
 <body class="home">
   <a class="skip-link" href="#content">К содержанию</a>
@@ -39,7 +39,7 @@
       <div class="hero-copy">
         <p class="eyebrow reveal">Персональная медицина для долголетия</p>
         <h1 class="hero-title reveal">Дольше жить<br><span>В полной силе</span></h1>
-        <p class="hero-intro reveal">Вы увидите, с чего начать и почему именно с этого. Врач оценит вес, состояние сердца и гормональное здоровье. Health‑лид поможет встроить первый шаг в повседневную жизнь с учётом сна и движения.</p>
+        <p class="hero-intro reveal">Вы увидите, с чего начать и почему именно с этого. Врач оценит вес, состояние сердца и гормональное здоровье. Специалист по сопровождению поможет встроить первый шаг в повседневную жизнь с учётом сна и движения.</p>
         <a class="button reveal" href="#contact">Получить персональный план чек‑апа <span aria-hidden="true">↗</span></a>
       </div>
     </section>
@@ -51,11 +51,14 @@
       </div>
       <div class="gateway-grid">
         <a class="route-card route-card-glp reveal" href="route.html?route=glp1" aria-label="Открыть программу снижения веса и метаболического здоровья">
-          <img src="assets/hero-glp1.webp" alt="" width="1440" height="811" loading="lazy">
+          <picture>
+            <source media="(max-width: 600px)" srcset="assets/hero-glp1-mobile-v2.webp">
+            <img src="assets/hero-glp1-v2.webp" alt="" width="1672" height="941" loading="lazy">
+          </picture>
           <span class="route-card-shade" aria-hidden="true"></span>
           <span class="route-card-label">Снижение веса · GLP‑1</span>
-          <strong>Снизить вес, сохранить силу, удержать результат</strong>
-          <span class="route-card-proof">Вес и талия · питание · сила · удержание результата</span>
+          <strong>Снижать вес, сохраняя силы</strong>
+          <span class="route-card-proof">Рацион · талия · сила · план продолжения</span>
           <i aria-hidden="true">↗</i>
         </a>
         <a class="route-card route-card-cardio reveal" href="route.html?route=cardio" aria-label="Открыть кардио-липидную программу">
@@ -88,7 +91,7 @@
           <li><span>04</span><strong>Как войдёт в жизнь</strong><em>Действия, которые помещаются в обычную неделю</em></li>
           <li><span>05</span><strong>Что станет видно</strong><em>Ответ организма и следующий выбор</em></li>
         </ol>
-        <div class="ownership-line"><span>Врач принимает медицинские решения</span><span>Health‑лид помогает встроить лечение в обычную жизнь</span><span>Вы видите логику выбора и сохраняете контроль</span></div>
+        <div class="ownership-line"><span>Врач выбирает медицинский шаг</span><span>Специалист по сопровождению помогает встроить его в обычную жизнь</span><span>Вы видите логику выбора и сохраняете контроль</span></div>
       </div>
     </section>
 
@@ -139,16 +142,25 @@
       <div class="knowledge-head reveal">
         <p class="eyebrow">Практические разборы</p>
         <h2 id="knowledge-title">Ответ целиком, чтобы действовать точнее</h2>
-        <p>Первый разбор уже открыт полностью: конкретный способ сохранить белок в рационе, когда на GLP‑1 стало труднее доедать обычную порцию.</p>
+        <p>Два разбора открыты полностью: практический рацион при меньшем аппетите и честная карта исследований фисетина — от клеток и мышей до первых данных у людей.</p>
       </div>
-      <div class="article-feature reveal">
-        <a class="article-card article-card-complete" href="article-protein-glp1.html">
+      <div class="article-feature article-feature-grid reveal">
+        <a class="article-card article-card-tile" href="article-protein-glp1.html">
           <div class="article-image"><img src="assets/article-protein.webp" alt="Тарелка с лососем, крупой и свежими овощами рядом с прогулочной обувью" width="1440" height="811" loading="lazy"></div>
           <div class="article-copy">
-            <span>GLP‑1 · питание · 8 минут</span>
-            <h3>Как сохранить белок в рационе, когда аппетит стал меньше</h3>
-            <p>Три шага для ближайшего приёма пищи, компактные продукты и ситуации, когда питание нужно обсудить с врачом.</p>
+            <span>Питание во время лечения · 13 минут</span>
+            <h3>Как собрать рацион, когда препарат уменьшил аппетит</h3>
+            <p>Две крайности, белок без магической цифры, сила, талия и план на период после отмены.</p>
             <em>Читать полный разбор ↗</em>
+          </div>
+        </a>
+        <a class="article-card article-card-tile article-card-frontier" href="article-senolytics-fisetin.html">
+          <div class="article-image"><img src="assets/article-fisetin-v2.webp" alt="Зрелое клеточное поле становится яснее за тонкой исследовательской границей" width="1672" height="941" loading="lazy"></div>
+          <div class="article-copy">
+            <span>Исследования старения · 15 минут</span>
+            <h3>Фисетин и клетки, которые перестали делиться</h3>
+            <p>Как сильная лабораторная гипотеза дошла до клиник Mayo, что уже увидели у людей и чего пока не знают.</p>
+            <em>Разобраться по данным ↗</em>
           </div>
         </a>
       </div>
